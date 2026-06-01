@@ -1,0 +1,187 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": [
+        "hi", "hello", "hey", "good morning", "good evening",
+        "hii", "heya", "namaste", "hi there", "hello there",
+        "anyone here", "yo", "sup", "hi i want to buy",
+        "hello i want to purchase", "hey i want to negotiate"
+      ],
+      "responses": [
+        "Hello! 👋 I can help you get the best deal on **{product_name}**. Current price is ₹{price}. What price would you like to offer?",
+        "Hi there! Ready to negotiate on **{product_name}**? Listed price is ₹{price}. Make me an offer 💰",
+        "Hey! Welcome. **{product_name}** is listed at ₹{price}. Tell me your price and let's talk 🤝"
+      ]
+    },
+    {
+      "tag": "product_inquiry",
+      "patterns": [
+        "what is the price", "how much does this cost", "price please",
+        "what is the cost", "tell me price", "what is the mrp",
+        "how much is it", "price batao", "kitna hai", "kya price hai",
+        "cost kya hai", "rate kya hai", "rate batao", "price bata",
+        "what is the rate", "how much for this", "price of this item",
+        "show me the price", "original price kya hai", "what does it cost"
+      ],
+      "responses": [
+        "**{product_name}** is listed at ₹{price} (Original: ₹{originalPrice}). Make me an offer! 😊",
+        "Current price of **{product_name}** is ₹{price}. Feel free to negotiate!",
+        "MRP was ₹{originalPrice}, current price is ₹{price}. I'm open to a fair offer 🙂"
+      ]
+    },
+    {
+      "tag": "make_offer",
+      "patterns": [
+        "i will pay", "i can pay", "i offer", "my offer is",
+        "i give", "i want this for", "will you accept",
+        "how about", "what about", "i can give", "i can do",
+        "is my offer", "will you take", "can you do",
+        "want to pay", "can i pay", "i will give you",
+        "offer", "mera offer", "mein dunga", "mein pay karunga",
+        "let me offer", "settling at", "i ll pay",
+        "deal at", "i want to buy at", "buying at",
+        "take this price", "this much i can pay"
+      ],
+      "responses": [
+        "Let me check that offer for **{product_name}** 🤔",
+        "Interesting offer! Let me evaluate...",
+        "Thanks for your offer on **{product_name}**, checking now..."
+      ]
+    },
+    {
+      "tag": "low_offer",
+      "patterns": [
+        "give it free", "free mein doge", "half price chahiye",
+        "i want 50 percent discount", "90 percent off",
+        "bahut sasta chahiye", "bahut kam price chahiye",
+        "i can only afford very less", "give at very low price",
+        "i want it very cheap", "almost free", "dirt cheap"
+      ],
+      "responses": [
+        "That's way too low 😅 The minimum I can go is ₹{min_price}. Please offer something reasonable.",
+        "I cannot go that low. Best I can offer starts at ₹{min_price}. Try a better offer!",
+        "That price is not possible. Try something closer to ₹{min_price} 🙏"
+      ]
+    },
+    {
+      "tag": "counter_offer",
+      "patterns": [
+        "too high", "reduce it more", "can you go lower",
+        "still expensive", "give better price", "thoda aur kam karo",
+        "aur sasta karo", "not satisfied with price", "still too much",
+        "can you do better", "not acceptable", "lower it",
+        "go down more", "reduce some more", "that is too much",
+        "still costly", "i need a better deal", "lower the price more",
+        "please reduce", "come down a bit", "thoda kam karo",
+        "kam karo bhai", "aur discount do", "more discount please",
+        "cant you do cheaper", "make it cheaper", "i want more discount",
+        "price thodi aur kam", "abhi bhi zyada hai", "still high"
+      ],
+      "responses": [
+        "Best I can offer for **{product_name}** is ₹{counter_price}. What do you say?",
+        "Hmm, how about ₹{counter_price} for **{product_name}**? That's a fair deal 🤝",
+        "I can go as low as ₹{counter_price} for **{product_name}**. Deal?"
+      ]
+    },
+    {
+      "tag": "accept_deal",
+      "patterns": [
+        "ok deal", "i accept", "done", "sounds good", "i will take it",
+        "final deal", "ok agreed", "deal done", "yes i agree",
+        "that works for me", "ok fine", "alright deal", "confirm",
+        "yes deal", "i agree", "theek hai deal", "manzoor hai",
+        "le lunga", "chalega", "perfect deal", "yes confirmed",
+        "ok i will buy", "i ll buy it", "close the deal",
+        "finalize it", "book it", "place the order",
+        "haan chalega", "okay done", "sold", "yes buy it"
+      ],
+      "responses": [
+        "🎉 Deal confirmed at ₹{final_price} for **{product_name}**! Your cart has been updated.",
+        "Awesome! **{product_name}** added to cart at negotiated price ₹{final_price} 🛍️",
+        "Deal sealed! ₹{final_price} for **{product_name}** — cart updated! 🎊"
+      ]
+    },
+    {
+      "tag": "reject_deal",
+      "patterns": [
+        "no thanks", "too expensive", "i am not interested",
+        "i will pass", "not buying", "no deal", "cant afford",
+        "i will go somewhere else", "forget it", "never mind",
+        "nahi chahiye", "choddo", "rehne do", "bahut mehnga hai",
+        "not interested", "will look elsewhere", "no way",
+        "absolutely not", "nope", "nahi", "i refuse",
+        "beyond my budget", "out of budget", "cant buy this"
+      ],
+      "responses": [
+        "No worries! **{product_name}** will be here if you change your mind 😊",
+        "Alright! Come back anytime. I'm here for better deals 🙂",
+        "Okay! Maybe next time. **{product_name}** might go on sale soon 😉"
+      ]
+    },
+    {
+      "tag": "ask_min_price",
+      "patterns": [
+        "what is your lowest price", "minimum price", "best price",
+        "final price kya hai", "kitna lowest de sakte ho",
+        "what is the minimum", "lowest possible price",
+        "sabse kam price", "aakhri price kya hai",
+        "what is your bottom price", "how low can you go",
+        "minimum kitna hai", "last price batao",
+        "final offer kya hai", "aakhri offer", "best deal do",
+        "floor price", "least price", "lowest you can do"
+      ],
+      "responses": [
+        "I cannot reveal the minimum, but make your best offer for **{product_name}**! 😉",
+        "There's a floor price but I cannot share it. What can you offer for **{product_name}**?",
+        "Go ahead and make your best offer — I'll let you know if it works 💪"
+      ]
+    },
+    {
+      "tag": "ask_discount",
+      "patterns": [
+        "give me discount", "any discount available", "koi discount hai",
+        "discount milega", "discount do", "give some discount",
+        "is there any offer", "koi offer hai", "any offer on this",
+        "discount chahiye", "special price do", "special discount",
+        "can i get a discount", "price cut karo", "offer lagao",
+        "sale price", "kuch discount", "thoda discount",
+        "some discount please", "any cashback", "koi scheme hai",
+        "is there a sale", "any deal today"
+      ],
+      "responses": [
+        "We love negotiation! Tell me your price for **{product_name}** and I'll see what I can do 😊",
+        "No fixed discount, but make me an offer on **{product_name}** and let's talk!",
+        "I'm open to a fair deal on **{product_name}**! What price do you have in mind? 🤔"
+      ]
+    },
+    {
+      "tag": "thanks",
+      "patterns": [
+        "thanks", "thank you", "thanks a lot", "ok thanks",
+        "great thanks", "many thanks", "thank you so much",
+        "thanks for the deal", "dhanyawad", "shukriya",
+        "bahut shukriya", "appreciate it", "thanks buddy", "cheers"
+      ],
+      "responses": [
+        "You are welcome 😊 Enjoy **{product_name}**!",
+        "Happy to help! Great choice with **{product_name}** 🙂",
+        "My pleasure! Come back for more deals 🛍️"
+      ]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": [
+        "bye", "goodbye", "see you", "talk later", "exit",
+        "see ya", "bye bye", "take care", "later", "cya",
+        "alvida", "ok bye", "good night", "i am leaving",
+        "closing chat", "quit", "end chat", "i am done"
+      ],
+      "responses": [
+        "Goodbye! 👋 Come back for more deals.",
+        "See you soon! Happy shopping 🛍️",
+        "Take care! Hope to see you again 😊"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Order Confirmation</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f6fb;
+            color: #1f2937;
+        }
+
+        .wrapper {
+            width: 100%;
+            padding: 24px 12px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 760px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid #e5e7eb;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #0ea5e9, #2563eb);
+            color: #ffffff;
+            padding: 28px 24px;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .header p {
+            margin: 8px 0 0;
+            font-size: 14px;
+            opacity: 0.95;
+        }
+
+        .content {
+            padding: 24px;
+        }
+
+        .meta {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 14px;
+            margin: 16px 0 18px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 8px;
+        }
+
+        th,
+        td {
+            border-bottom: 1px solid #e5e7eb;
+            padding: 10px 8px;
+            text-align: left;
+            font-size: 13px;
+            vertical-align: middle;
+        }
+
+        th {
+            font-size: 12px;
+            color: #475569;
+            text-transform: uppercase;
+            letter-spacing: .02em;
+            background: #f8fafc;
+        }
+
+        .img {
+            width: 56px;
+            height: 56px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 1px solid #e5e7eb;
+            background: #f8fafc;
+        }
+
+        .right {
+            text-align: right;
+            white-space: nowrap;
+        }
+
+        .summary {
+            margin-top: 16px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 14px;
+            font-size: 14px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin: 6px 0;
+        }
+
+        .summary-row.total {
+            font-weight: 700;
+            font-size: 16px;
+            margin-top: 10px;
+            border-top: 1px solid #cbd5e1;
+            padding-top: 10px;
+        }
+
+        .footer {
+            padding: 18px 24px 26px;
+            font-size: 13px;
+            color: #64748b;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <div class="header">
+                <h1>Payment Successful 🎉</h1>
+                <p>Your order is confirmed. Thank you for shopping with MyDealBazaar.</p>
+            </div>
+
+            <div class="content">
+                <p style="margin:0 0 10px; font-size: 15px;">Hi <strong>
+                        <%= customerName %>
+                    </strong>,</p>
+                <p style="margin:0; font-size: 14px; line-height:1.6;">We received your payment successfully and your
+                    order is now confirmed.</p>
+
+                <div class="meta">
+                    <div><strong>Customer Name:</strong>
+                        <%= customerName %>
+                    </div>
+                    <div><strong>Customer Email:</strong>
+                        <%= customerEmail %>
+                    </div>
+                    <div><strong>Status:</strong> Order Confirmed</div>
+                </div>
+
+                <table role="presentation" aria-label="Ordered products">
+                    <thead>
+                        <tr>
+                            <th style="width:72px;">Image</th>
+                            <th>Product Title</th>
+                            <th class="right">Quantity</th>
+                            <th class="right">Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% items.forEach(function(item) { %>
+                            <tr>
+                                <td>
+                                    <% if (item.image) { %>
+                                        <img class="img" src="<%= item.image %>" alt="<%= item.title %>" />
+                                        <% } else { %>
+                                            <div class="img"></div>
+                                            <% } %>
+                                </td>
+                                <td>
+                                    <%= item.title %>
+                                </td>
+                                <td class="right">
+                                    <%= item.qty %>
+                                </td>
+                                <td class="right">₹<%= formatINR(item.price) %>
+                                </td>
+                            </tr>
+                            <% }) %>
+                    </tbody>
+                </table>
+
+                <div class="summary">
+                    <div class="summary-row">
+                        <span>Total Quantity</span>
+                        <span>
+                            <%= totalQty %>
+                        </span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Total Amount</span>
+                        <span>₹<%= formatINR(totalAmount) %></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer">
+                Thank you for choosing MyDealBazaar. If you need any help, reply to this email.
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
