@@ -276,7 +276,7 @@ POST /api/payment/verify-payment
 # 👨‍💻 Author
 
 **Rahul Koli**
-
+**Mohd. Waliul**
 Full Stack Developer
 
 Built with ❤️ using Node.js, Express.js & MongoDB
